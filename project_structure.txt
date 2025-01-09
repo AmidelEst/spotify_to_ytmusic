@@ -1,0 +1,29 @@
+spotify_to_ytmusic
+├── generate_ytmusic_credentials.py
+├── LICENSE
+├── oauth.json
+├── project_structure.txt
+├── pyproject.toml
+├── raw_headers.txt
+├── README.md
+├── settings.json
+├── spotify2ytmusic
+│   ├── backend.py
+│   ├── cli.py
+│   ├── gui.py
+│   ├── __init__.py
+│   ├── __main__.py
+│   ├── __pycache__
+│   │   ├── backend.cpython-312.pyc
+│   │   ├── cli.cpython-312.pyc
+│   │   ├── gui.cpython-312.pyc
+│   │   ├── __init__.cpython-312.pyc
+│   │   └── spotify_backup.cpython-312.pyc
+│   ├── reverse_playlist.py
+│   ├── settings.json
+│   └── spotify_backup.py
+└── tests
+    ├── playliststest.json
+    └── test_basics.py
+
+4 directories, 23 files
