@@ -1,41 +1,44 @@
 [tool.poetry]
-name = "spotify2ytmusic"
-version = "0.1.0"
-description = "Copy Spotify playlists to YTMusic/YouTube Music"
-authors = ["Sean Reifschneider <jafo00@gmail.com>"]
+name = "spotify2ytmusicv2"
+version = "0.1.1"
+description = "Enhanced version of Spotify to YTMusic playlist transfer tool"
+authors = ["Sean Reifschneider <jafo00@gmail.com>, Amit Pompas <amitpom14@gmail.com>"]
 license = "Creative Commons Zero v1.0 Universal"
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
 ytmusicapi = "*"
+browser-cookie3 = "*"
+tk = "*"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-s2yt_gui = "spotify2ytmusic.gui:main"
-s2yt_load_liked = "spotify2ytmusic.cli:load_liked"
-s2yt_load_liked_albums = "spotify2ytmusic.cli:load_liked_albums"
-s2yt_copy_playlist = "spotify2ytmusic.cli:copy_playlist"
-s2yt_copy_all_playlists = "spotify2ytmusic.cli:copy_all_playlists"
-s2yt_create_playlist = "spotify2ytmusic.cli:create_playlist"
-s2yt_list_playlists = "spotify2ytmusic.cli:list_playlists"
-s2yt_search = "spotify2ytmusic.cli:search"
-s2yt_list_liked_albums = "spotify2ytmusic.cli:list_liked_albums"
-s2yt_ytoauth = "spotify2ytmusic.cli:ytoauth"
+s2yt_gui = "spotify2ytmusicv2.gui:main"
+s2yt_load_liked = "spotify2ytmusicv2.cli:load_liked"
+s2yt_load_liked_albums = "spotify2ytmusicv2.cli:load_liked_albums"
+s2yt_copy_playlist = "spotify2ytmusicv2.cli:copy_playlist"
+s2yt_copy_all_playlists = "spotify2ytmusicv2.cli:copy_all_playlists"
+s2yt_create_playlist = "spotify2ytmusicv2.cli:create_playlist"
+s2yt_list_playlists = "spotify2ytmusicv2.cli:list_playlists"
+s2yt_search = "spotify2ytmusicv2.cli:search"
+s2yt_list_liked_albums = "spotify2ytmusicv2.cli:list_liked_albums"
+s2yt_ytoauth = "spotify2ytmusicv2.cli:ytoauth"
 
 [tool.briefcase]
-project_name = "Spotify2YTMusic"
+project_name = "spotify2ytmusicv2"
 bundle = "com.linsomniac"
 version = "0.1"
 
-[tool.briefcase.app.spotify2ytmusic]
-formal_name = "Spotify2YTMusic"
+[tool.briefcase.app.spotify2ytmusicv2]
+formal_name = "spotify2ytmusicv2"
 description = "A tool for helping to convert Spotify playlists to YouTube Music"
-sources = ['spotify2ytmusic']
+sources = ['spotify2ytmusicv2']
 requires = [
   'ytmusicapi',
+  'browser-cookie3',
   'tk',
 ]

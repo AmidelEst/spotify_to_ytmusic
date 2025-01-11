@@ -289,12 +289,11 @@ class Window:
         print()
 
     def yt_login(self, auto=False) -> None:
-        """Logs in to YT Music. If the oauth.json file is not found, it opens a new console window to run the 'ytmusicapi oauth' command.
+        """Logs in to YT Music using browser cookies to generate oauth.json file.
 
         Args:
-            auto (bool, optional): Weather to automatically login using the oauth.json file. Defaults to False.
+            auto (bool, optional): Whether to automatically login using the oauth.json file. Defaults to False.
         """
-
         def run_in_thread():
             if os.path.exists("oauth.json"):
                 print("File detected, auto login")
@@ -302,34 +301,21 @@ class Window:
                 print("No file detected. Manual login required")
                 return
             else:
-                print("File not detected, login required")
-
-                # Open a new console window to run the command
-                if os.name == "nt":  # If the OS is Windows
-                    try:
-                        process = subprocess.Popen(
-                            ["ytmusicapi", "oauth"],
-                            creationflags=subprocess.CREATE_NEW_CONSOLE,
-                        )
-                    except FileNotFoundError as e:
-                        print(
-                            f"ERROR: Unable to run 'ytmusicapi oauth'.  Is ytmusicapi installed?  Perhaps try running 'pip install ytmusicapi' Exception: {e}"
-                        )
-                        sys.exit(1)
-                    process.communicate()
-                else:  # For Unix and Linux
-                    try:
-                        subprocess.call(
-                            "x-terminal-emulator -e ytmusicapi oauth",
-                            shell=True,
-                            stdout=subprocess.PIPE,
-                        )
-                    except:
-                        subprocess.call(
-                            "xterm -e ytmusicapi oauth",
-                            shell=True,
-                            stdout=subprocess.PIPE,
-                        )
+                print("File not detected, generating credentials...")
+                try:
+                    # Import and run the credentials generation
+                    from . import ytmusic_credentials
+                    ytmusic_credentials.main()
+                    
+                    # Check if the file was created successfully
+                    if os.path.exists("oauth.json"):
+                        print("Login successful!")
+                    else:
+                        print("Failed to generate credentials")
+                        return
+                except Exception as e:
+                    print(f"Error during login: {e}")
+                    return
 
             self.tabControl.select(self.tab2)
             print()
